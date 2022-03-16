@@ -12,23 +12,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 route(app);
 
-app.use(express.urlencoded({
-  extended: true
-}));
+app.use(
+    express.urlencoded({
+        extended: true,
+    }),
+);
 app.use(express.json());
 
-
-
 // app.use(morgan('combined'))
-app.engine('hdb', engine({
-  extname: ".hdb"
-}));
+app.engine(
+    'hdb',
+    engine({
+        extname: '.hdb',
+    }),
+);
 app.set('view engine', 'hdb');
 
-app.set('views',path.join(__dirname, 'resources/views'));
-
-
+app.set('views', path.join(__dirname, 'resources/views'));
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+    console.log(`Example app listening on port ${port}`);
+});
