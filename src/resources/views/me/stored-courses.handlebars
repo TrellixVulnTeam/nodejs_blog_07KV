@@ -1,0 +1,74 @@
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">videoId</th>
+    </tr>
+  </thead>
+  <tbody>
+        {{#each courses}}
+    <tr>
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{this.name}}</td>
+      <td>{{this.description}}</td>
+      <td>{{this.videoId}}</td>
+       <td>
+        <a href="/courses/{{this._id}}/edit" class="btn btn-primary">Sua</a>
+        <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{this._id}}" class="btn btn-primary">Xoa</a>
+    </td>
+    </tr>
+   
+        {{/each}}
+  </tbody>
+</table>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="xac-nhan-xoa" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form id="delete-form" method="post"></form>
+
+<script>
+var courseId;
+var exampleModal = document.getElementById('exampleModal')
+
+
+exampleModal.addEventListener('show.bs.modal', function (event) {
+  var button = event.relatedTarget
+  courseId = button.getAttribute('data-id')
+  
+ console.log(courseId);
+})
+
+var xacnhanxoa = document.getElementById('xac-nhan-xoa');
+var deleteForm = document.getElementById('delete-form')
+
+
+xacnhanxoa.onclick = function () {
+deleteForm.action = '/courses/' + courseId + '?_method=DELETE';
+deleteForm.submit();
+}
+
+</script>

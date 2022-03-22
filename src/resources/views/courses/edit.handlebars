@@ -1,0 +1,56 @@
+
+<h1> SUA </h1>
+<form method="post" action="/courses/{{course._id}}?_method=PUT"   onsubmit = "return validateForm()">
+
+
+<div class="input-group mb-3">
+  <span class="input-group-text" for="name" >Name</span>
+  <input name="name" type="text" class="form-control" value="{{course.name}}" id="name">
+</div>
+
+
+<div class="input-group mb-3">
+  <span class="input-group-text" for="videoId" >videoId</span>
+  <input name="videoId" type="text" class="form-control" value="{{course.videoId}}" id="videoId">
+</div>
+
+
+<div class="input-group mb-3">
+  <span class="input-group-text" for="description" >description</span>
+  <input name="description" type="text" class="form-control" value="{{course.description}}" id="description">
+</div>
+
+
+<div class="input-group mb-3">
+  <span class="input-group-text" for="img" >img</span>
+  <input name="img" type="text" class="form-control" value="{{course.img}}" id="img">
+</div>
+
+
+<button type="submit" class="btn btn-primary btn-lg" >Luu</button>
+
+<script>
+    function validateForm()
+{
+    // Bước 1: Lấy giá trị của username và password
+    var name = document.getElementById('name').value;
+    var description = document.getElementById('description').value;
+ 
+    // Bước 2: Kiểm tra dữ liệu hợp lệ hay không
+    if (name == ''){
+        alert('Chua nhap Title');
+    }
+    else if (description == '')
+    {
+        alert('Bạn chưa nhập mo ta');
+    }
+    else{
+        return true;
+    }
+ 
+    return false;
+}
+</script>
+</form>
+
+
